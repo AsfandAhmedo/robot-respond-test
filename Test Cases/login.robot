@@ -10,7 +10,7 @@ ${Password_Box}    //input[@id='input-9']
 ${Valid_Email}    ahmadahmad205601@gmail.com 
 ${Valid_Password}    Malik@205601
 ${Login_Button}    //button[@type='submit']
-${Dashboard}    //div[@class='dls-text-text-primary dls-txt-h5'][normalize-space()='Dashboard']
+${Login_Profile_Verification}    //span[@class='dls-txt-h5 dls-text-text-primary']
 
 
 *** Test Cases ***
@@ -20,5 +20,5 @@ login with Valid Credentials
     Input Text    ${Email_Box}    ${Valid_Email}
     Input Text    ${Password_Box}    ${Valid_Password}
     Click Button    ${Login_Button}
-    Wait Until Element Is Visible    ${Dashboard}
+    Wait Until Element Is Visible    ${Login_Profile_Verification}
     
