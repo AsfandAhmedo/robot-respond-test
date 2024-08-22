@@ -31,7 +31,6 @@ Add workspace user flow
     Setup Browser
     login with Valid Credentials
     Sleep    5s
-    Click Element    ${Profile_Button}   
     Go To    https://app.respond.io/organization/241858/general
     Sleep    5s
     Scroll Element Into View    ${Workspace_Button}
