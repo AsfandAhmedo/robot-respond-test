@@ -1,111 +1,152 @@
 # robot-respond-test
 Respond Demo Test Script
 
-Installations and Configurations
-Install Google Chrome browser for MacOS here
+# Installations and Configurations
 
-Install Homebrew:
+1. Install Google Chrome browser for MacOS [here](https://www.google.com/chrome/)
 
-$ /bin/bash -c "$(curl  -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-Then update ~/.zshrc:
+2. Install Homebrew:
+    ```bash
+    $ /bin/bash -c "$(curl  -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
 
-$ nano ~/.zshrc
-Add the following line to the bottom of the file and save it:
+    - Then update `~/.zshrc`:
+        ```bash
+        $ nano ~/.zshrc
+        ```
 
-export PATH="/opt/homebrew/bin:$PATH"
-Then apply changes:
+    - Add the following line to the bottom of the file and save it:
+        ```bash
+        export PATH="/opt/homebrew/bin:$PATH"
+        ```
 
-$ source ~/.zshrc
-Then, restart your Terminal.
+    - Then apply changes:
+        ```bash
+        $ source ~/.zshrc
+        ```
 
-Install Python 3:
+    - Then, restart your Terminal.
 
-Download latest version of python here
+3. Install Python 3:
+    -   Download latest version of python [here](https://www.python.org/downloads/)
 
-Then, run the downloaded executable file (.pkg, .exe). The Python setup modal should appear. Tick the Add python.exe to PATH to automatically include python to PATH
+    -   Then, run the downloaded executable file (.pkg, .exe). The Python setup modal should appear. Tick the Add python.exe to PATH to automatically include python to PATH
 
-Then, click Install Now and follow the instructions prompted by python setup modal.
+    -   Then, click `Install Now` and follow the instructions prompted by python setup modal.
 
-Then check if the default is Python 3 (Should return Python 3.x.x):
+    -   Then check if the default is Python 3 (*Should return Python 3.x.x*):
+        ```bash
+        $ python3 --version
+        ```
 
-$ python3 --version
-Setup VSCode for IDE
+4. Setup VSCode for IDE
+    -   Download VSCode [here](https://code.visualstudio.com/download)
 
-Download VSCode here
+    -   Then install `Robot Framework Language Server` extension from the VSCode marketplace.
 
-Then install Robot Framework Language Server extension from the VSCode marketplace.
+5. Configure Git Account in Terminal
+    -   Use your personal email account used in Github
+        ```bash
+        $ git config --global user.email "your.name@aerodyne.group"
+        ```
+    -   Use the username used in Github
+        ```bash
+        $ git config --global user.name "your username"
+        ```
+    
+    -   Set remote push destination to default repository
+        ```bash
+        $ git config --global push.default current
+        ```
 
-Configure Git Account in Terminal
+6. Then, Navigate to `~/Documents/` via Terminal and do these steps:
+    -   Clone QA-Autobots repository:
+        ```bash
+        $ git clone https://github.com/Aerodyne-Group/QA-Autobots.git
+        ```
+    
+    -   Install chromedriver:
+        ```bash
+        $ brew update
+        $ brew uninstall chromedriver
+        $ brew install --cask chromedriver
+        ```
 
-Use Aerodyne personal email account used in Github
+    -   Ensure that the machine's Google Chrome browser is at the same version as the chromedriver. To check the chromedriver's version:
+        ```bash
+        $ chromedriver --version
+        ```
 
-$ git config --global user.email "your.name@aerodyne.group"
-Use the username used in Github
+    - Install and create a virtual environment named `virtualenv`:
+        ```bash
+        $ python3 -m venv <virtual env name>
+        ```
 
-$ git config --global user.name "your username"
-Set remote push destination to default repository
+    - Next, we need to specify the `virtualenv` path in the VSCode `Robot Framework Language Server` extension that we previously installed.
 
-$ git config --global push.default current
-Then, Navigate to ~/Documents/ via Terminal and do these steps:
+    - Navigate to Robot Framework Language Extension > Extension Settings > Language-server: Python and input the path:
+        ```bash
+        /Users/<user>/Documents/virtualenv/bin/python
+        ```
 
-Clone QA-Autobots repository:
+    -   Restart VSCode.
 
-$ git clone https://github.com/Aerodyne-Group/QA-Autobots.git
-Install chromedriver:
+    - Then, activate the `virtualenv` via Terminal in VSCode. Note that in order to activate the virtual environment, user have to be inside the directory where the `virtualenv` folder is located (run `$ deactivate` anytime and anywhere to exit the virtual environment):
+        ```bash
+        $ source virtualenv/bin/activate
+        ```
 
-$ brew update
-$ brew uninstall chromedriver
-$ brew install --cask chromedriver
-Ensure that the machine's Google Chrome browser is at the same version as the chromedriver. To check the chromedriver's version:
+    - Once activated, notice the `(virtualenv)` preceeding the machine's user name in Terminal. Then install the following:
+        - Robot Framework
+            ```bash
+            $ pip3 install -U robotframework
+            ```
 
-$ chromedriver --version
-Install and create a virtual environment named virtualenv:
+        - Selenium Library
+            ```bash
+            $ pip3 install robotframework-seleniumlibrary
+            ```
 
-$ python3 -m venv <virtual env name>
-Next, we need to specify the virtualenv path in the VSCode Robot Framework Language Server extension that we previously installed.
+        - Requests
+            ```bash
+            $ pip3 install robotframework-requests
+            ```
 
-Navigate to Robot Framework Language Extension > Extension Settings > Language-server: Python and input the path:
+        - Appium Library
+            ```bash
+            $ pip3 install robotframework-appiumlibrary
+            ```
 
-/Users/<user>/Documents/virtualenv/bin/python
-Restart VSCode.
+        - Pabot
+            ```bash
+            $ pip3 install robotframework-pabot
+            ```
 
-Then, activate the virtualenv via Terminal in VSCode. Note that in order to activate the virtual environment, user have to be inside the directory where the virtualenv folder is located (run $ deactivate anytime and anywhere to exit the virtual environment):
+        - Then, save the project dependencies in a file named `Robotframework_Requirements.txt`
+            ```bash
+            $ pip3 freeze > requirements.txt
+            ```
 
-$ source virtualenv/bin/activate
-Once activated, notice the (virtualenv) preceeding the machine's user name in Terminal. Then install the following:
+    -   If while working on the project, you decided to add more libraries, you can re-run the same command to save the newly added libraries. If you decide to setup the same project on a different machine, you can install the same dependencies saved in the `Robotframework_Requirements.txt` file. Just run:
+        ```bash
+        pip3 install -r requirements.txt
+        ```
 
-Robot Framework
+# Execute the test automation script
 
-$ pip3 install -U robotframework
-Selenium Library
+1. The execution will be done via Terminal
 
-$ pip3 install robotframework-seleniumlibrary
-Requests
+2. Ensure that the virtual environment is activated
 
-$ pip3 install robotframework-requests
-Appium Library
+3. Navigate into the folder containing the test that you want to execute, via Terminal.
 
-$ pip3 install robotframework-appiumlibrary
-Pabot
+4. Run the test:
+    ```bash
+    $ robot <test_file_name>.robot
+    ```
 
-$ pip3 install robotframework-pabot
-Then, save the project dependencies in a file named Robotframework_Requirements.txt
-
-$ pip3 freeze > requirements.txt
-If while working on the project, you decided to add more libraries, you can re-run the same command to save the newly added libraries. If you decide to setup the same project on a different machine, you can install the same dependencies saved in the Robotframework_Requirements.txt file. Just run:
-
-pip3 install -r requirements.txt
-Execute the test automation script
-The execution will be done via Terminal
-
-Ensure that the virtual environment is activated
-
-Navigate into the folder containing the test that you want to execute, via Terminal.
-
-Run the test:
-
-$ robot <test_file_name>.robot
-To view the HTML test report:
-
-$ open log.html
+5. To view the HTML test report:
+    ```bash
+    $ open log.html
+    ```
 
