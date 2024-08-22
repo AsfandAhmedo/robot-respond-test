@@ -47,7 +47,7 @@ Respond Demo Test Script
 5. Configure Git Account in Terminal
     -   Use your personal email account used in Github
         ```bash
-        $ git config --global user.email "your.name@aerodyne.group"
+        $ git config --global user.email "your email"
         ```
     -   Use the username used in Github
         ```bash
@@ -60,9 +60,9 @@ Respond Demo Test Script
         ```
 
 6. Then, Navigate to `~/Documents/` via Terminal and do these steps:
-    -   Clone QA-Autobots repository:
+    -   Clone repository:
         ```bash
-        $ git clone https://github.com/Aerodyne-Group/QA-Autobots.git
+        $ git clone https://github.com/AsfandAhmedo/robot-respond-test
         ```
     
     -   Install chromedriver:
@@ -109,23 +109,7 @@ Respond Demo Test Script
 
         - Requests
             ```bash
-            $ pip3 install robotframework-requests
-            ```
-
-        - Appium Library
-            ```bash
-            $ pip3 install robotframework-appiumlibrary
-            ```
-
-        - Pabot
-            ```bash
-            $ pip3 install robotframework-pabot
-            ```
-
-        - Then, save the project dependencies in a file named `Robotframework_Requirements.txt`
-            ```bash
-            $ pip3 freeze > requirements.txt
-            ```
+            $ pip3 install robotframework-request
 
     -   If while working on the project, you decided to add more libraries, you can re-run the same command to save the newly added libraries. If you decide to setup the same project on a different machine, you can install the same dependencies saved in the `Robotframework_Requirements.txt` file. Just run:
         ```bash
